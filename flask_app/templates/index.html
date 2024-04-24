@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='css/style.css') }}">
+    <title>Registration Page</title>
+</head>
+
+<body>
+    <header>
+        <h1>Please Login</h1>
+    </header>
+    <section id="messages">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div id="popup">
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+            <button onclick="popup.remove()">Check your Login Information</button>
+        </div>
+        {% endif %}
+        {% endwith %}
+    </section>
+    <main>
+
+        <div class="container">
+            <!--Registering a new user-->
+            <section id="registration">
+                <h2>Register New Account</h2>
+                <form action="/users/create" method="post">
+                    <div class="form-group">
+                        <label for="first_name">First Name:</label>
+                        <input type="text" id="first_name" name="first_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name">Last Name:</label>
+                        <input type="text" id="last_name" name="last_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_password">Confirm Password:</label>
+                        <input type="password" id="confirm_password" name="confirm_password">
+                    </div>
+                    <input type="submit" value="Join">
+                </form>
+            </section>
+            <!--Login for existing users-->
+            <section id="login">
+                <h2>Login</h2>
+                <form action="/users/login" method="post">
+                    <div class="form-group">
+                        <label for="login_email">Email:</label>
+                        <input type="email" id="login_email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="login_password">Password:</label>
+                        <input type="password" id="login_password" name="password">
+                    </div>
+                    <input type="submit" value="Login">
+                </form>
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>

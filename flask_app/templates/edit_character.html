@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/edit_page.css') }}">
+    <title>Edit Recipe</title>
+</head>
+
+<body>
+    <header>
+        <nav class="topNav">
+            <a href="/users/logout">Logout</a>
+            <a href="/users/home" class="dashboard-link">Home Page</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="validation-messages">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div id="popup">
+                {% for message in messages %}
+                <p>{{ message }}</p>
+                {% endfor %}
+                <button onclick="popup.remove()">Okay</button>
+            </div>
+            {% endif %}
+            {% endwith %}
+        </section>
+
+        <section class="edit-form">
+            <form action="/character/edit/{{ character.id }}" method="post">
+                <h1>Character Information</h1>
+                <!-- maybe add a line for the character name? -->
+                <p>User: {{ character.name }}</p>  
+
+                <!-- Not sure if character name better in the sheet or atop the sheet, TBD -->
+                <!-- <div class="form-group">
+                    <label for="destination">name: {{ character.name }}</label>
+                    <input type="text" id="destination" name="destination" value="{{character.destination}}">
+                </div> -->
+
+                <!-- <input type="text" name="destination" value=" {{ character.destination }}">  -->
+
+                <input type="hidden" name="user_id" value="{{ session.user_id }}">
+                
+
+                <div class="form-group">
+                    <label for="character_level">Level: {{ character.character_level }} </label>
+                    <input type="date" id="character_level" name="character_level" value = "{{character.character_level}}">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="race">Race: {{ character.race }} </label>
+                    <input type="date" id="race" name="race" value = "{{character.race}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="hp">HP: {{ character.hp }} </label>
+                    <input type="date" id="hp" name="hp" value = "{{character.hp}}">
+                </div>
+
+                
+                
+
+                <div class="form-group">
+                    <label for="speciality">Class: {{ character.speciality }}</label>
+                    <input type="text" id="speciality" name="speciality" value = "{{character.speciality}}">
+                </div>
+
+                
+                
+
+                <div class="actions">
+                    <a href="/users/home"><button type="button" class="cancel-button">Cancel</button></a>
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <a href="/users/home">Back to Dashboard</a>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='css/create_style.css') }}">
+    <title>Create Recipe</title>
+</head>
+<body>
+    <header class="topNav">
+        <h1>Character Creation</h1>
+        <nav>
+            <a href="/users/home">Home Page</a>
+            <a href="/users/logout">Logout</a>
+        </nav>
+    </header>
+
+    <main class="middleNav">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div id="popup">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+                <button onclick="popup.remove()">Okay</button>
+            </div>
+            {% endif %}
+        {% endwith %}
+
+        <form action="/character/create/" method="post">
+            <input type="hidden" name="user_id" value="{{ session.user_id }}">
+            
+
+            <div class="form-group">
+                <label for="name">Name : </label>
+                <input type="text" id="name" name="name">
+            </div>
+
+            <div class="form-group">
+                <label for="race">Race: </label>
+                <input type="text" id="race" name="race">
+            </div>
+
+            <div class="form-group">
+                <label for="hp">Health Points (HP): </label>
+                <input type="number" id="hp" name="hp">
+            </div>
+
+
+            
+
+            <div class="form-group">
+                <label for="character_level">Level: </label>
+                <input type="number" id="character_level" name="character_level">
+            </div>    
+            
+            
+            <div class="form-group">
+                <label for="speciality">Class: </label>
+                <input type="text" id="speciality" name="speciality">
+            </div> 
+
+            
+
+            <div class="actions">
+                <a href="/character/view/<int:character_id>/"><button type="button" class="cancel-button">Cancel</button></a>
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/view_single.css') }}">
+    <title>Trip Details</title>
+</head>
+
+<body>
+    <header class="topNav">
+        <nav>
+            <a href="/users/logout">Logout</a> |
+            <a href="/users/home">Home Page</a>
+        </nav>
+    </header>
+
+    <main class="treeDetails">
+        <h1>{{ character.name }}</h1>
+        
+        
+
+        <div class="treeInfo">
+            <h2>Level: {{ character.character_level }} | HP: {{ character.hp }} | Current HP: {{ character.hp}} | Class: {{ character.speciality }} </h2>
+        </div>
+        <table>
+            <div class="treeAttributes">
+                <p><strong>Str:</strong> {{ key_stats.str }}</p>
+                <p><strong>Agy:</strong> {{ key_stats.agy }}</p>
+                <p><strong>Sta:</strong> {{ key_stats.sta }}</p>
+                <p><strong>Int:</strong> {{ key_stats.int }}</p>
+                <p><strong>Spt:</strong> {{ key_stats.spt }}</p>
+                <p><strong>Cha:</strong> {{ key_stats.cha }}</p>
+            </div>
+        </table>
+    </main>
+
+    
+    <footer>
+        <a href="/users/home">Back to Home Page</a>
+    </footer>
+</body>
+
+</html>

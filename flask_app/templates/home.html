@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='css/home_style.css') }}">
+    <title>Home Page</title>
+</head>
+
+<body>
+    <header class="topNav">
+        <h1>All Characters: </h1>
+        <p></p>
+        <h2>Welcome {{ session.user_name }}!</h2>
+        <nav>
+            <a href="/character/create/">Create a character</a>
+            <a href="/users/logout">Logout</a>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section class="leftSideBox">
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>name: </th>
+                        <th>Level: </th>
+                        <th>Race: </th>
+                        <th>HP:</th>
+                        <th>Speciality: </th>
+                        <th>Actions </th>
+                        
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for character in characters %}
+                    <tr>
+                        <td>  {{ character.name }} </td>
+                        <td> {{ character.character_level }}</td>
+                        
+                        <td>{{ character.race }} </td>
+                        <td> {{ character.hp }}  </td>
+                        <td> {{ character.speciality }} </td> 
+                        
+                        <td><a href="/character/view/{{ character.id }}">View</a></td>
+                        <td><a href="/character/edit/{{ characters.id }}">Edit</a></td>
+                        
+                        <!-- temporarily removing as it may be restricted to the edit page -->
+                        <!-- {% if session.user_id == characters.id %}
+                        <td><a href="/character/delete/{{ character.id }}">Delete</a></td>
+                        
+                        {% endif %} -->
+                    </tr>
+                    
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+</body>
+
+</html>
