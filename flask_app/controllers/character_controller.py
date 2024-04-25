@@ -73,7 +73,7 @@ def show_edit_character(character_id):
 
     character = Character.read_one_character(data)
 
-    return render_template('ViewCharacter.html', character=character)
+    return render_template('edit_character.html', character=character)
 
 
 #! Route to update a single character

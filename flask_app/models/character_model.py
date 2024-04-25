@@ -81,6 +81,20 @@ class Character:
                 this_character.host = user_model.User.instantiate_user(result)
                 characterss.append(this_character)
             return characterss
+        
+
+
+        ###  retrieve character with all the stats ###
+        @classmethod
+        def get_character_with_stats(cls, data):
+            query = " SELECT * FROM characters LEFT JOIN key_stats_with_characters ON key_stats_with_characters.characters.id = characters.id LEFT JOIN key_stats ON key_stats_with_characters.key_stats.id = key_stats.id WHERE characters.id = %(id)s; "
+            results = connectToMySQL('charaacters').query_db(query, data)
+            character = cls( results[0] )
+            for row_from_db in results:
+                ###now adding the sta info to the character data ###
+                character_data = {
+                    
+                }
 
 
 

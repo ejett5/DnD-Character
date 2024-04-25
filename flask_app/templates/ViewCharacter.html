@@ -5,12 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/view_single.css') }}">
-    <title>Trip Details</title>
+    <title>{{ character.name }} </title>
+    
+    <script>
+        function openStat(evt, statName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(statName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
 </head>
 
 <body>
     <header class="topNav">
         <nav>
+            <a href="https://ejett5.github.io/WoW-Calculator/" target="_blank">WoW-Calculator</a>
             <a href="/users/logout">Logout</a> |
             <a href="/users/home">Home Page</a>
         </nav>
@@ -22,18 +39,63 @@
         
 
         <div class="treeInfo">
-            <h2>Level: {{ character.character_level }} | HP: {{ character.hp }} | Current HP: {{ character.hp}} | Class: {{ character.speciality }} </h2>
+            <h2>Level: {{ character.character_level }} | Max HP: {{ character.hp }} | Current HP: {{ character.current_hp}} | Class: {{ character.speciality }} </h2>
         </div>
-        <table>
-            <div class="treeAttributes">
-                <p><strong>Str:</strong> {{ key_stats.str }}</p>
-                <p><strong>Agy:</strong> {{ key_stats.agy }}</p>
-                <p><strong>Sta:</strong> {{ key_stats.sta }}</p>
-                <p><strong>Int:</strong> {{ key_stats.int }}</p>
-                <p><strong>Spt:</strong> {{ key_stats.spt }}</p>
-                <p><strong>Cha:</strong> {{ key_stats.cha }}</p>
+
+        <div class="tab">
+            <button class="tablinks" onclick="openStat(event, 'General')" > General </button>
+            <button class="tablinks" onclick="openStat(event, 'Skills')" > Skills </button>
+            <button class="tablinks" onclick="openStat(event, 'Personal Equipment')" > Personal Equipment </button>
+            <button class="tablinks" onclick="openStat(event, 'Inventory')" > Inventory  </button>
+        </div>
+        
+            <div id="General" class="tabcontent">
+                <div class="treeAttributes">
+                    <!-- TODO get key_stats recognised and defined so it will read from that table in the db -->
+                    <p><strong>Str:</strong> {{ character.str }}</p>
+                    <p><strong>Agy:</strong> {{ character.agy }}</p>
+                    <p><strong>Sta:</strong> {{ character.sta }}</p>
+                    <p><strong>Int:</strong> {{ character.int }}</p>
+                    <p><strong>Spt:</strong> {{ character.spt }}</p>
+                    <p><strong>Cha:</strong> {{ character.cha }}</p>
+                </div>
             </div>
-        </table>
+
+
+            <!-- Skills tab for general skills -->
+            <div id="Skills" class="tabcontent">
+                <div class="treeAttributes">
+                    <p>Appraise</p>
+                    <p>Balance</p>
+                    <p>concentration</p>
+                    <p>Craft</p>
+                    <p>Craft</p>
+                    <p>Craft</p>
+                    <p>Diplomacy</p>
+                    <p>Knowledge</p>
+                    <p>Profession</p>
+                    <p>Search</p>
+                    <p>Sense Motive</p>
+                </div>
+            </div>
+
+            <div  id="Personal Equipment" class="tabcontent">
+                <div class="treeAttributes">
+                    <p>Sputnik Staff</p>
+                    <p>Ac Necklace</p>
+                    <p>Diving Suit</p>
+                </div>
+            </div>
+
+
+            <div  id="Inventory" class="tabcontent">
+                <div class="treeAttributes">
+                    <p>Party Fund:</p>
+                    <p>Health Potion(s)</p>
+                    <p>junk</p>
+                </div>
+            </div>
+        
     </main>
 
     

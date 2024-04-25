@@ -2,7 +2,7 @@ body {
   font-family: "Arial", sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f5f5f5;
+  background-color: purple;
 }
 
 .topNav {
@@ -29,7 +29,7 @@ body {
 
 .treeInfo h2,
 .treeDetails h1 {
-  color: #2c3e50;
+  color: #43f20d;
 }
 
 .treeAttributes {
@@ -40,9 +40,10 @@ body {
 
 .treeAttributes p {
   background-color: #ecf0f1;
-  border-left: 5px solid #3498db;
+  /* border-left: 5px solid #3498db; */
   padding: 10px;
   margin: 10px 0;
+  text-align: center;
 }
 
 footer {
@@ -63,3 +64,43 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
+
+
+
+/* creating tabs styling, mimicking w3 for quick baseline on project*/
+.tab{
+  overflow:hidden;
+  border: 1px solid #ccc;
+  background-color: beige;
+}
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: lightseagreen;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+
