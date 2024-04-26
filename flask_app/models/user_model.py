@@ -41,7 +41,7 @@ class User:
         user_id =  connectToMySQL(DB).query_db(query, user_data)
         session['user_id'] = user_id
         session['user_name'] = user_id
-        session['user_name'] = f"{user_data['first_name']} {user_data['last_name']}"
+        session['user_name'] = f"{user_data['first_name']}"
 
         return user_data
 

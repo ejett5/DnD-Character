@@ -10,9 +10,8 @@
 
 <body>
     <header class="topNav">
-        <h1>All Characters: </h1>
-        <p></p>
-        <h2>Welcome {{ session.user_name }}!</h2>
+        
+        <h1>Welcome {{ session.user_data }}</h1>
         <nav>
             <a href="/character/create/">Create a character</a>
             <a href="/users/logout">Logout</a>
