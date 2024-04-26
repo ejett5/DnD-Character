@@ -19,6 +19,7 @@ class Character:
             self.name = data["name"]
             self.race = data['race']
             self.hp = data['hp']
+            self.current_hp = data['current_hp']
             self.speciality = data["speciality"]            
             self.character_level = data['character_level']
             self.created_at = data["created_at"]
@@ -88,6 +89,7 @@ class Character:
         @classmethod
         def get_character_with_stats(cls, data):
             query = " SELECT * FROM characters LEFT JOIN key_stats_with_characters ON key_stats_with_characters.characters.id = characters.id LEFT JOIN key_stats ON key_stats_with_characters.key_stats.id = key_stats.id WHERE characters.id = %(id)s; "
+            
             results = connectToMySQL('charaacters').query_db(query, data)
             character = cls( results[0] )
             for row_from_db in results:
@@ -142,7 +144,7 @@ class Character:
             
             
             query = '''
-                UPDATE characters SET name = %(name)s, race = %(race)s, hp= %(hp)s, character_level = %(character_level)s, speciality = %(speciality)s                     
+                UPDATE characters SET name = %(name)s, race = %(race)s, hp= %(hp)s, current_hp = %(current_hp)s, character_level = %(character_level)s, speciality = %(speciality)s                     
                 WHERE id = %(id)s;
                 '''
             connectToMySQL(DB).query_db(query, data)    
@@ -185,6 +187,9 @@ class Character:
                 is_valid = False
 
 
+            # if len(data['hp']) < 1:
+            #     flash('Ensure you have health else your journey shall be to your grave')
+            #     is_valid = False
                 
             # date_regex = re.compile(r'^\d{4}-\d{2}-\d{2}$')
             # if not date_regex.match(data['release_date']):

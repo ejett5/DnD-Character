@@ -20,7 +20,7 @@
     </header>
 
     <main class="content">
-        <section class="leftSideBox">
+        
             
             <table>
                 <thead>
@@ -49,16 +49,16 @@
                         <td><a href="/character/edit/{{ character.id }}">Edit</a></td>
                         
                         <!-- temporarily removing as it may be restricted to the edit page -->
-                        <!-- {% if session.user_id == characters.id %}
+                        {% if session.user_id == characters.id %}
                         <td><a href="/character/delete/{{ character.id }}">Delete</a></td>
                         
-                        {% endif %} -->
+                        {% endif %}
                     </tr>
                     
                     {% endfor %}
                 </tbody>
             </table>
-        </section>
+        
 
     </main>
 </body>

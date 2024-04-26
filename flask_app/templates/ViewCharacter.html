@@ -29,7 +29,7 @@
         <nav>
             <a href="https://ejett5.github.io/WoW-Calculator/" target="_blank">WoW-Calculator</a>
             <a href="/users/logout">Logout</a> |
-            <a href="/users/home">Home Page</a>
+            <a href="/users/home">Select Character</a>
         </nav>
     </header>
 
@@ -39,7 +39,7 @@
         
 
         <div class="treeInfo">
-            <h2>Level: {{ character.character_level }} | Max HP: {{ character.hp }} | Current HP: {{ character.current_hp}} | Class: {{ character.speciality }} </h2>
+            <h2>Level: {{ character.character_level }} | Max HP: {{ character.hp }} | Current HP: {{ character.current_hp}} <input type="number" id = "current_hp"> | Class: {{ character.speciality }} </h2>
         </div>
 
         <div class="tab">
@@ -100,7 +100,7 @@
 
     
     <footer>
-        <a href="/users/home">Back to Home Page</a>
+        <a href="/users/home">Character Selection Screen</a>
     </footer>
 </body>
 

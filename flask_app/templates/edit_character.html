@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/edit_page.css') }}">
-    <title>Edit Recipe</title>
+    <title>Update Stats</title>
 </head>
 
 <body>
@@ -32,20 +32,20 @@
 
         <section class="edit-form">
             <form action="/character/edit/{{ character.id }}" method="post">
-                <h1>Character Information</h1>
+                
                 <!-- maybe add a line for the character name? -->
-                <p>User: {{ character.name }}</p>  
-
-                <!-- Not sure if character name better in the sheet or atop the sheet, TBD -->
-                <!-- <div class="form-group">
-                    <label for="destination">name: {{ character.name }}</label>
-                    <input type="text" id="destination" name="destination" value="{{character.destination}}">
-                </div> -->
+                <h1> {{ character.name }} </h1>                  
 
                 <!-- <input type="text" name="destination" value=" {{ character.destination }}">  -->
 
                 <input type="hidden" name="user_id" value="{{ session.user_id }}">
                 
+
+                <div class="form-group">
+                    <label for="name">Name: {{ character.name }} </label>
+                    <input type="text" id="name" name="name" value = "{{character.name}}">
+                </div>
+
 
                 <div class="form-group">
                     <label for="character_level">Level: {{ character.character_level }} </label>
@@ -61,6 +61,12 @@
                 <div class="form-group">
                     <label for="hp">HP: {{ character.hp }} </label>
                     <input type="number" id="hp" name="hp" value = "{{character.hp}}">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="current_hp">Current Health: {{ character.current_hp }} </label>
+                    <input type="number" id="current_hp" name="current_hp" value = "{{character.current_hp}}">
                 </div>
 
                 
@@ -84,7 +90,7 @@
 
     <footer>
         <div class="footer">
-            <a href="/users/home">Back to Dashboard</a>
+            <a href="/users/home">Back to Character Selection</a>
         </div>
     </footer>
 </body>

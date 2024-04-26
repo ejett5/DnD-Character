@@ -3,6 +3,7 @@ from flask import Flask, render_template, redirect, request, session, flash, url
 # from flask_app.models import character_model, user_model
 from flask_app.models.character_model import Character
 from flask_app.models.user_model import User
+from flask_app.models.key_stats_model import Key_Stats
 
 # CREATE ADVENTURE CONTROLLER
 @app.route('/character/create/', methods=['GET'])
@@ -42,6 +43,7 @@ def view_character(character_id):
     data = {
         'id': character_id
     }
+    Key_Stats.get_stat_with_character(data)
 
 
 

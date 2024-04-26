@@ -2,18 +2,18 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background-color: #559e54;
   }
 
   .topNav {
-    background-color: #333;
+    background-color: #fba90a;
     color: white;
     padding: 10px 20px;
     text-align: right;
   }
 
   .topNav a {
-    color: white;
+    color: black;
     padding: 10px 15px;
     text-decoration: none;
     margin-left: 10px;
@@ -83,8 +83,8 @@ body {
   }
 
   footer {
-    background-color: #333;
-    color: white;
+    background-color: #fba90a;
+    color: black;
     text-align: center;
     padding: 10px;
     position: fixed;
@@ -93,7 +93,7 @@ body {
   }
 
   footer a {
-    color: white;
+    color: black;
     text-decoration: none;
   }
 
