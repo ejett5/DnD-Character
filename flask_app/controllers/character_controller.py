@@ -87,6 +87,7 @@ def update_single_character(character_id):
         'name': request.form['name'],
         'race':request.form['race'],       
         'hp':request.form['hp'],  
+        'current_hp':request.form['current_hp'],  
         'character_level' : request.form['character_level'],    
         'speciality' : request.form['speciality']    
     }
